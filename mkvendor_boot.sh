@@ -19,6 +19,10 @@ fi
 if [ -d $PRIVATE_MODULE_DIR ]; then
   rm -rf $PRIVATE_MODULE_DIR
 fi
+if [ -d out ]; then
+  rm -rf out
+fi
+mkdir -p out
 mkdir -p $TEMP_MODULES_PATH
 mkdir -p $PRIVATE_MODULE_DIR
 echo "Prepare temp dirs done."
