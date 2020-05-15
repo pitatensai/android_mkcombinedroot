@@ -1,0 +1,7 @@
+在kernel同级目录clone此仓库后，编译内核后，到该目录下执行:
+./mkvendor_boot.sh your_dts_name (不加参数默认使用: rk3399-evb-ind-lpddr4-android-avb)
+
+目录结构:
+    kernel mkcombinedroot
+
+默认使用arm64编译，如果要用arm，到脚本开头的变量位置修改.
