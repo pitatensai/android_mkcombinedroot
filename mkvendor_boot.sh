@@ -9,6 +9,9 @@ if [ ! -n "$1" ]; then
 else    
   DTB_PATH=../kernel/arch/arm64/boot/dts/rockchip/$1.dtb
 fi
+
+export PATH=$PATH:./bin
+
 echo "==========================================="
 echo "Use DTS as $DTB_PATH"
 echo "==========================================="
