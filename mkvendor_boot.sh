@@ -25,6 +25,24 @@ fi
 if [ -d out ]; then
   rm -rf out
 fi
+if [ ! -d system ]; then
+  mkdir system
+fi
+if [ ! -d ramdisk/dev ]; then
+  mkdir -p ramdisk/dev
+fi
+if [ ! -d ramdisk/mnt ]; then
+  mkdir -p ramdisk/mnt
+fi
+if [ ! -d ramdisk/sys ]; then
+  mkdir -p ramdisk/sys
+fi
+if [ ! -d ramdisk/proc ]; then
+  mkdir -p ramdisk/proc
+fi
+if [ ! -d ramdisk/debug_ramdisk ]; then
+  mkdir -p ramdisk/debug_ramdisk
+fi
 mkdir -p out
 mkdir -p $TEMP_MODULES_PATH
 mkdir -p $PRIVATE_MODULE_DIR
