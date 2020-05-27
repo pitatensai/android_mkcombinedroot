@@ -1,0 +1,4 @@
+phy-rockchip-emmc.ko
+sdhci-of-arasan.ko
+gspca_main.ko
+cqhci.ko

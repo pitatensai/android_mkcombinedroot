@@ -13,7 +13,9 @@
 #
 
 modules_scan_result.load
-ramdisk_modules.load
 /ramdisk/lib/modules/
 /out/
 /temp/
+
+vendor/etc/init.insmod.cfg
+/vendor/lib/modules/
