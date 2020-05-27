@@ -11,6 +11,9 @@
 #
 # Rockchip directory (for rockchip modules)
 #
+
+modules_scan_result.load
+ramdisk_modules.load
 /ramdisk/lib/modules/
 /out/
 /temp/

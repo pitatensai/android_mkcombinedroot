@@ -1,7 +1,7 @@
 #!/bin/bash
 KERNEL_IMAGE=../kernel/arch/arm64/boot/Image
 PRIVATE_MODULE_DIR=./ramdisk/lib/modules
-PRIVATE_LOAD_FILE=./ramdisk/lib/modules/modules.load
+PRIVATE_LOAD_FILE=./ramdisk_modules.load
 TEMP_MODULES_PATH=./temp/lib/modules/0.0
 KERNEL_DRIVERS_PATH=../kernel/drivers
 if [ ! -n "$1" ]; then
@@ -13,7 +13,8 @@ fi
 export PATH=$PATH:./bin
 
 echo "==========================================="
-echo "Use DTS as $DTB_PATH"
+echo -e "\033[33mYou can create ramdisk_modules.load here to customize modules.load\033[0m"
+echo -e "\033[33mUse DTS as $DTB_PATH\033[0m"
 echo "==========================================="
 echo "Preparing temp dirs and use placeholder 0.0..."
 if [ -d temp ]; then
@@ -59,10 +60,17 @@ echo "==========================================="
 echo "Generating depmod..."
 depmod -b temp 0.0
 find $TEMP_MODULES_PATH -type f -name *.ko | xargs basename -a > $TEMP_MODULES_PATH/modules.load
-echo "generate depmod done."
+cp $TEMP_MODULES_PATH/modules.load ./modules_scan_result.load
+echo -e "\033[32mSave modules scan result as ./modules_scan_result.load \033[0m"
+echo "Generate depmod done."
 
 cp $TEMP_MODULES_PATH/modules.alias $PRIVATE_MODULE_DIR/
-cp $TEMP_MODULES_PATH/modules.load $PRIVATE_MODULE_DIR/
+if [ ! -f $PRIVATE_LOAD_FILE ]; then
+  cp $TEMP_MODULES_PATH/modules.load $PRIVATE_MODULE_DIR/
+else
+  echo -e "\033[32mUse specific $PRIVATE_LOAD_FILE as modules.load \033[0m"
+  cp $PRIVATE_LOAD_FILE $PRIVATE_MODULE_DIR/modules.load
+fi
 cp $TEMP_MODULES_PATH/modules.dep $PRIVATE_MODULE_DIR/
 cp $TEMP_MODULES_PATH/modules.softdep $PRIVATE_MODULE_DIR/
 
