@@ -3,7 +3,7 @@ KERNEL_IMAGE=../kernel/arch/arm64/boot/Image
 PRIVATE_MODULE_DIR=./ramdisk/lib/modules
 PRIVATE_LOAD_FILE=./res/ramdisk_modules.load
 TEMP_MODULES_PATH=./temp/lib/modules/0.0
-KERNEL_DRIVERS_PATH=../kernel/drivers
+KERNEL_DRIVERS_PATH=../kernel
 if [ ! -n "$1" ]; then
   DTB_PATH=../kernel/arch/arm64/boot/dts/rockchip/rk3399-evb-ind-lpddr4-android-avb.dtb
 else    
